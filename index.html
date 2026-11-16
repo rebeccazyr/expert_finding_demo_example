@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>Expert Finding Demo Examples</title>
+  <style>
+    html, body { margin: 0; background: #fff; }
+    img { display: block; width: 100%; max-width: 3348px; height: auto; margin: 0 auto; background: #fff; cursor: zoom-in; }
+    body.zoomed img { width: 3348px; max-width: none; margin: 0; cursor: zoom-out; }
+  </style>
+</head>
+<body>
+  <img id="examples" src="expert_finding_examples.png" width="3348" height="4732" alt="Four expert finding demo examples">
+  <script>
+    const image = document.getElementById('examples');
+    image.addEventListener('click', event => {
+      const x = event.offsetX / image.clientWidth;
+      const y = event.offsetY / image.clientHeight;
+      const zoomed = document.body.classList.toggle('zoomed');
+      requestAnimationFrame(() => {
+        if (zoomed) {
+          window.scrollTo(x * image.clientWidth - innerWidth / 2, y * image.clientHeight - innerHeight / 2);
+        } else {
+          window.scrollTo(0, 0);
+        }
+      });
+    });
+  </script>
+</body>
+</html>
